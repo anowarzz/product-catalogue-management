@@ -8,7 +8,7 @@ import Navbar from 'react-bootstrap/Navbar';
 function NavbarArea() {
 
   return (
-    <Navbar className='bg-light py-4' expand="md">
+    <Navbar className='bg-light py-4 font-poppins' expand="md">
       <Container fluid>
         <Navbar.Brand className='text-dark fw-bold fs-4 ps-4'>Catalogue Management</Navbar.Brand>
         <Navbar.Toggle aria-controls="navbarScroll" />
@@ -18,20 +18,32 @@ function NavbarArea() {
             // style={{ maxHeight: '100px' }}
             // navbarScroll
           >
-
-        
-            <Nav.Link href="#" disabled>
-              Link
-            </Nav.Link>
           </Nav>
-          <Form className="d-flex">
+          <div className = "text-center text-md-end w-100">
+            <select className='px-4 py-1 mx-3' name="category" id="">
+                <option value="">
+                    Product 1
+                </option>
+                <option value="">
+                    Product 2
+                </option>
+                <option value="">
+                    Product 3
+                </option>
+                <option value="">
+                    Product 4
+                </option>
+            </select>
+
+</div>
+          <Form className="d-flex flex-column flex-md-row mt-3 mt-md-0 gap-2 md-gap-0">
             <Form.Control
               type="search"
-              placeholder="Search"
-              className="me-2"
+              placeholder="Search Here"
+              className="fs-7"
               aria-label="Search"
             />
-          <Button variant="success">Success</Button>
+          <Button variant="success">Search</Button>
           </Form>
         </Navbar.Collapse>
       </Container>
