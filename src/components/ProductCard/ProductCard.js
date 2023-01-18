@@ -4,29 +4,24 @@ import { Button, Card, Col, Container, Row } from "react-bootstrap";
 const ProductCard = ({ singleProduct }) => {
   console.log(singleProduct);
 
+// Destructuring all the property of a single product
   const { category, description, id, image, price, rating, title } =
     singleProduct;
 
   return (
 
-<Container>
 
-    <Row>
-
-<Col>
-<Card >
-      <Card.Img variant="top" src={image} />
+<Card className="p-2">
+      <Card.Img variant="top" src={image} style={ {height: '320px'}}/>
       <Card.Body>
-        <Card.Title>{title}</Card.Title>
+        <Card.Title className="fw-bold">{title}</Card.Title>
         <Card.Text>
     {description}
         </Card.Text>
-        <Button variant="primary">Go somewhere</Button>
+        <Button variant="primary">Read More</Button>
       </Card.Body>
     </Card>
-    </Col>
-    </Row>
-</Container>
+
 
   );
 };

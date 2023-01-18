@@ -28,7 +28,7 @@ const AllProducts = () => {
       <div className="container">
         <div className="row">
           {allProducts?.map((singleProduct) => (
-            <div className="col-12 col-md-6 col-lg-4" key={singleProduct?.id}>
+            <div className="col-12 p-3 col-md-6 col-lg-4" key={singleProduct?.id}>
               <ProductCard  singleProduct={singleProduct} />
             </div>
           ))}
