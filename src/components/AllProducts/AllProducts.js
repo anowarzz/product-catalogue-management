@@ -1,5 +1,4 @@
 import React, { useContext } from "react";
-import { Button } from "react-bootstrap";
 import { ProductContext } from "../HomePage/HomePage";
 import LoaderAnimation from "../LoaderAnimation/LoaderAnimation";
 import ProductCard from "../ProductCard/ProductCard";

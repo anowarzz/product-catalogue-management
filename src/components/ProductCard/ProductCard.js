@@ -9,7 +9,11 @@ const ProductCard = ({ singleProduct }) => {
     singleProduct;
 
   // State to toggle full product description
-  const [showFullDescription, setShowFullDescription] = useState(false);
+
+
+const [showFullDescription, setShowFullDescription] = useState(false)
+
+
 
   return (
     <Card className="p-2 h-100 position-relative shadow-sm">

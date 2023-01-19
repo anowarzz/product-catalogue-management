@@ -36,7 +36,7 @@ const products = [allProducts, setAllProducts, loading, setLoading]
         <ProductContext.Provider value={products} >
             <NavbarArea loading={loading} setLoading={setLoading}/>
             <AllProducts loading={loading} setLoading={setLoading} />
-            <AnalyseModal />
+ 
 
         </ProductContext.Provider>
     );
