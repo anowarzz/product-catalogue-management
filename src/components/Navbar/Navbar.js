@@ -6,21 +6,28 @@ import Form from "react-bootstrap/Form";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import { ProductContext } from "../HomePage/HomePage";
-import './Navbar.css'
-
-
+import "./Navbar.css";
 
 function NavbarArea({ loading, setLoading }) {
   // all products from product context
   const [allProducts, setAllProducts, categories] = useContext(ProductContext);
 
-  // state for search keywords
-  // const [searchQuery, setSearchQuery] = useState("")
+  // Loading all the products from database using API
+
+  const handleShowAllProduct = () => {
+    setLoading(true);
+    fetch("https://fakestoreapi.com/products")
+      .then((res) => res.json())
+      .then((data) => {
+        setAllProducts(data);
+
+        setLoading(false);
+      });
+  };
 
   // Filtering products according according category name selected
   const filteredProduct = (e) => {
     const categoryName = e.target.value;
-
     setLoading(true);
     fetch(`https://fakestoreapi.com/products/category/${categoryName}`)
       .then((res) => res.json())
@@ -30,18 +37,6 @@ function NavbarArea({ loading, setLoading }) {
         setLoading(false);
       });
   };
-
-  // Displaying products according to search result
-
-  // const searchProduct = (e) => {
-
-  //   const searchQuery = e.target.value;
-  //   setSearchQuery(searchQuery)
-
-  //   const searchProduct = allProducts.filter(product => product?.title?.includes(searchQuery))
-  //   setAllProducts(searchProduct)
-
-  // }
 
   return (
     <Navbar className="bg-light py-4 font-poppins" expand="md">
@@ -56,7 +51,7 @@ function NavbarArea({ loading, setLoading }) {
             <span>o</span>
             <span>g</span>
             <span>u</span>
-            <span>e</span>  <span>M</span>
+            <span>e</span> <span>M</span>
             <span>a</span>
             <span>n</span>
             <span>a</span>
@@ -71,13 +66,17 @@ function NavbarArea({ loading, setLoading }) {
 
           {/* Filtering Product according category */}
           <div className="text-center text-md-end w-100">
+            <Button className="all-products" onClick={handleShowAllProduct} variant="info">
+             View All Products
+            </Button>
+
             <select
               className="px-4 outline-primary py-1 mx-3"
               name="category"
               id=""
               onChange={filteredProduct}
             >
-              <option>All Category</option>
+              <option disabled>Select Category</option>
 
               {categories?.map((category, i) => (
                 <option key={i} value={category}>
@@ -86,17 +85,6 @@ function NavbarArea({ loading, setLoading }) {
               ))}
             </select>
           </div>
-
-          {/* Searching product using product name keywords */}
-          <Form className="d-flex flex-column flex-md-row mt-3 mt-md-0 gap-2 md-gap-0">
-            <Form.Control
-              type="search"
-              placeholder="Search Here"
-              className="fs-7"
-              aria-label="Search"
-            />
-            <Button variant="success">Search</Button>
-          </Form>
         </Navbar.Collapse>
       </Container>
     </Navbar>

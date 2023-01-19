@@ -38,6 +38,7 @@ const CategoryPieChart = () => {
     }
   });
 
+//  necessary product data  for pie chart
   const data = {
     labels: categoryNames?.map((category) => category),
     datasets: [
@@ -45,12 +46,12 @@ const CategoryPieChart = () => {
         label: "No of products",
         data: [mensClothing, jewelery, electronics, womensClothing],
         backgroundColor: ["red", "aqua", "blue", "gray"],
-        borderColor: [
-          "rgba(255, 99, 132, 1)",
-          "rgba(54, 162, 235, 1)",
-          "rgba(255, 206, 86, 1)",
-          "rgba(75, 192, 192, 1)",
-        ],
+        // borderColor: [
+        //   "rgba(255, 99, 132, 1)",
+        //   "rgba(54, 162, 235, 1)",
+        //   "rgba(255, 206, 86, 1)",
+        //   "rgba(75, 192, 192, 1)",
+        // ],
         borderWidth: 1,
       },
     ],

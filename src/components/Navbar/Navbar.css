@@ -1,3 +1,7 @@
 span:hover{
 color: rgb(0, 170, 255) ;
 }
+
+.all-products:hover{
+background-color:chartreuse
+}
