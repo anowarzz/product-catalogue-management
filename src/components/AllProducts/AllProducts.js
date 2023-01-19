@@ -1,28 +1,18 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { Col, Container, Row } from "react-bootstrap";
+import { ProductContext } from "../HomePage/HomePage";
 import ProductCard from "../ProductCard/ProductCard";
 
 const AllProducts = () => {
-  // state for storing all the products
-  const [allProducts, setAllProducts] = useState([]);
 
-  // Loading all the products from database using API
-  useEffect(() => {
-    fetch("https://fakestoreapi.com/products")
-      .then((res) => res.json())
-      .then((data) => {
-        setAllProducts(data);
-        console.log(data);
-      });
+const [allProducts] = useContext(ProductContext)
 
-    console.log(allProducts);
-  }, []);
 
   return (
     <div>
-      <h3 className="text-center my-4">
+      <h3 className="text-center my-4 fw-bold">
    
-        Total Products {allProducts?.length}
+        Total {allProducts?.length} Products Found
       </h3>
 
       <div className="container">

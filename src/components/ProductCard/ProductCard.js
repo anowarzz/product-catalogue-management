@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Button, Card, Col, Container, Row } from "react-bootstrap";
 
 const ProductCard = ({ singleProduct }) => {
-  console.log(singleProduct);
+
 
   // Destructuring all the property of a single product
   const { category, description, id, image, price, rating, title } =

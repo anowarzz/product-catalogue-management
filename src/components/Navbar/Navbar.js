@@ -1,10 +1,30 @@
+import { useContext } from "react";
 import Button from "react-bootstrap/Button";
 import Container from "react-bootstrap/Container";
 import Form from "react-bootstrap/Form";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
+import { ProductContext } from "../HomePage/HomePage";
 
 function NavbarArea() {
+  const [products] = useContext(ProductContext);
+
+  const uniqueCategory = [];
+
+
+  products?.map( product => { 
+    if (uniqueCategory?.indexOf(product?.category) === -1) {
+      uniqueCategory?.push(product?.category) 
+     }
+     else{
+  
+      
+     }
+    } 
+      
+      )
+
+
   return (
     <Navbar className="bg-light py-4 font-poppins" expand="md">
       <Container fluid>
@@ -18,10 +38,15 @@ function NavbarArea() {
           {/* Filtering Product according category */}
           <div className="text-center text-md-end w-100">
             <select className="px-4 py-1 mx-3" name="category" id="">
-              <option value="">Product 1</option>
-              <option value="">Product 2</option>
-              <option value="">Product 3</option>
-              <option value="">Product 4</option>
+              <option disabled selected>
+                Select Category
+              </option>
+
+      
+
+              {
+                uniqueCategory?.map((category, i) => <option key={i} value={category}>{category} </option>)
+              }
             </select>
           </div>
 
