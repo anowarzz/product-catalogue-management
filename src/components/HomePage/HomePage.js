@@ -1,5 +1,6 @@
 import React, { createContext, useEffect, useState } from 'react';
 import AllProducts from '../AllProducts/AllProducts';
+import AnalyseModal from '../AnalyseModal/AnalyseModal';
 import NavbarArea from '../Navbar/Navbar';
 
 
@@ -35,6 +36,7 @@ const products = [allProducts, setAllProducts, loading, setLoading]
         <ProductContext.Provider value={products} >
             <NavbarArea loading={loading} setLoading={setLoading}/>
             <AllProducts loading={loading} setLoading={setLoading} />
+            <AnalyseModal />
 
         </ProductContext.Provider>
     );

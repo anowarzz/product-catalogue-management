@@ -13,6 +13,12 @@ function NavbarArea({loading, setLoading}) {
   // state for storing category Names
   const [categories, setCategories] = useState([]);
 
+// state for search keywords
+const [searchQuery, setSearchQuery] = useState("") 
+
+
+
+
   // Loading the products category Names
   useEffect(() => {
 setLoading(true)
@@ -38,6 +44,23 @@ setLoading(true)
       });
   };
 
+
+
+// Displaying products according to search result
+
+// const searchProduct = (e) => {
+
+//   const searchQuery = e.target.value;
+//   setSearchQuery(searchQuery)
+
+
+
+//   const searchProduct = allProducts.filter(product => product?.title?.includes(searchQuery))
+//   setAllProducts(searchProduct)
+
+// }
+
+
   return (
     <Navbar className="bg-light py-4 font-poppins" expand="md">
       <Container fluid>
@@ -51,7 +74,7 @@ setLoading(true)
           {/* Filtering Product according category */}
           <div className="text-center text-md-end w-100">
             <select
-              className="px-4 py-1 mx-3"
+              className="px-4 outline-primary py-1 mx-3"
               name="category"
               id=""
               onChange={filteredProduct}
@@ -71,6 +94,7 @@ setLoading(true)
           {/* Searching product using product name keywords */}
           <Form className="d-flex flex-column flex-md-row mt-3 mt-md-0 gap-2 md-gap-0">
             <Form.Control
+            value = {searchQuery}
               type="search"
               placeholder="Search Here"
               className="fs-7"

@@ -1,5 +1,5 @@
-import React, { useContext, useEffect, useState } from "react";
-import { Col, Container, Row } from "react-bootstrap";
+import React, { useContext } from "react";
+import { Button } from "react-bootstrap";
 import { ProductContext } from "../HomePage/HomePage";
 import LoaderAnimation from "../LoaderAnimation/LoaderAnimation";
 import ProductCard from "../ProductCard/ProductCard";
@@ -27,6 +27,10 @@ const [allProducts] = useContext(ProductContext)
           ))}
         </div>
       </div>
+        <Button style={{ position: 'fixed' , bottom: '30px', right:'50px' }} >ANALYSE</Button>
+
+
+   
     </div>
   );
 };
