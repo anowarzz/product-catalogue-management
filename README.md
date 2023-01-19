@@ -9,4 +9,4 @@
 
 
 ### Live Site Link
-See the section about [Catalogue Manager](https://product-catalouge-management.netlify.app/) for more information.
+ [Catalogue Manager](https://product-catalouge-management.netlify.app/)
