@@ -1,6 +1,6 @@
 import React, { createContext, useEffect, useState } from 'react';
 import AllProducts from '../AllProducts/AllProducts';
-import AnalyseModal from '../AnalyseModal/AnalyseModal';
+import ChartModal from '../ChartModal/ChartModal';
 import NavbarArea from '../Navbar/Navbar';
 
 
@@ -9,6 +9,27 @@ export const ProductContext = createContext([])
 
 
 const HomePage = () => {
+
+
+  // state for storing category Names
+  const [categories, setCategories] = useState([]);
+
+
+  // Loading the products category Names
+  useEffect(() => {
+setLoading(true)
+    fetch("https://fakestoreapi.com/products/categories")
+      .then((res) => res.json())
+      .then((data) => {
+        setCategories(data);
+        setLoading(false)
+      });
+  }, []);
+
+
+  console.log(categories);
+  
+
 
 
   // state for storing all the products
@@ -29,15 +50,14 @@ const HomePage = () => {
       });
   }, []);
 
-const products = [allProducts, setAllProducts, loading, setLoading]
+const products = [allProducts, setAllProducts, categories]
 
 
     return (
         <ProductContext.Provider value={products} >
             <NavbarArea loading={loading} setLoading={setLoading}/>
             <AllProducts loading={loading} setLoading={setLoading} />
- 
-
+            <ChartModal />
         </ProductContext.Provider>
     );
 };

@@ -1,4 +1,5 @@
 import { useContext, useEffect, useState } from "react";
+import { NavLink } from "react-bootstrap";
 import Button from "react-bootstrap/Button";
 import Container from "react-bootstrap/Container";
 import Form from "react-bootstrap/Form";
@@ -8,28 +9,11 @@ import { ProductContext } from "../HomePage/HomePage";
 
 function NavbarArea({loading, setLoading}) {
   // all products from product context
-  const [allProducts, setAllProducts] = useContext(ProductContext);
+  const [allProducts, setAllProducts, categories] = useContext(ProductContext);
 
-  // state for storing category Names
-  const [categories, setCategories] = useState([]);
 
 // state for search keywords
 // const [searchQuery, setSearchQuery] = useState("") 
-
-
-
-
-  // Loading the products category Names
-  useEffect(() => {
-setLoading(true)
-    fetch("https://fakestoreapi.com/products/categories")
-      .then((res) => res.json())
-      .then((data) => {
-        setCategories(data);
-        setLoading(false)
-      });
-  }, []);
-
 
   // Filtering products according according category name selected
   const filteredProduct = (e) => {
@@ -64,8 +48,8 @@ setLoading(true)
   return (
     <Navbar className="bg-light py-4 font-poppins" expand="md">
       <Container fluid>
-        <Navbar.Brand className="text-dark fw-bold fs-4 ps-4 pointer">
-          Catalogue Management
+        <Navbar.Brand className="text-dark fw-bold fs-4 ps-4 ">
+          <NavLink >Catalogue Management</NavLink>
         </Navbar.Brand>
         <Navbar.Toggle aria-controls="navbarScroll" />
         <Navbar.Collapse id="navbarScroll">
