@@ -1,9 +1,10 @@
 import React, { useContext, useEffect, useState } from "react";
 import { Col, Container, Row } from "react-bootstrap";
 import { ProductContext } from "../HomePage/HomePage";
+import LoaderAnimation from "../LoaderAnimation/LoaderAnimation";
 import ProductCard from "../ProductCard/ProductCard";
 
-const AllProducts = () => {
+const AllProducts = ({loading, setLoading}) => {
 
 const [allProducts] = useContext(ProductContext)
 
@@ -14,6 +15,8 @@ const [allProducts] = useContext(ProductContext)
    
         Total {allProducts?.length} Products Found
       </h3>
+
+      {loading && <LoaderAnimation ></LoaderAnimation>}
 
       <div className="container">
         <div className="row">

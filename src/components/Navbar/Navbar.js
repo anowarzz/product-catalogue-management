@@ -6,7 +6,7 @@ import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import { ProductContext } from "../HomePage/HomePage";
 
-function NavbarArea() {
+function NavbarArea({loading, setLoading}) {
   // all products from product context
   const [allProducts, setAllProducts] = useContext(ProductContext);
 
@@ -15,22 +15,26 @@ function NavbarArea() {
 
   // Loading the products category Names
   useEffect(() => {
+setLoading(true)
     fetch("https://fakestoreapi.com/products/categories")
       .then((res) => res.json())
       .then((data) => {
         setCategories(data);
+        setLoading(false)
       });
   }, []);
 
-  // Filtering products according according category name selected
 
+  // Filtering products according according category name selected
   const filteredProduct = (e) => {
     const categoryName = e.target.value;
+    setLoading(true)
     fetch(`https://fakestoreapi.com/products/category/${categoryName}`)
       .then((res) => res.json())
       .then((data) => {
         console.log(data);
         setAllProducts(data);
+        setLoading(false)
       });
   };
 
@@ -53,7 +57,7 @@ function NavbarArea() {
               onChange={filteredProduct}
             >
               <option disabled selected>
-                Select Category
+                All Category
               </option>
 
               {categories?.map((category, i) => (

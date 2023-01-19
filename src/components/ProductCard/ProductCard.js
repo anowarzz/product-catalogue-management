@@ -1,11 +1,11 @@
 import React, { useState } from "react";
-import { Button, Card, Col, Container, Row } from "react-bootstrap";
+import { Button, Card } from "react-bootstrap";
 
 const ProductCard = ({ singleProduct }) => {
 
 
   // Destructuring all the property of a single product
-  const { category, description, id, image, price, rating, title } =
+  const { description, id, image, price, title } =
     singleProduct;
 
   // State to toggle full product description

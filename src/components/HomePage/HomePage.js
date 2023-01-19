@@ -13,23 +13,28 @@ const HomePage = () => {
   // state for storing all the products
   const [allProducts, setAllProducts] = useState([]);
 
+  // loading state for animation while calling api
+  const [loading, setLoading] = useState(false)
+
   // Loading all the products from database using API
   useEffect(() => {
+    setLoading(true)
     fetch("https://fakestoreapi.com/products")
       .then((res) => res.json())
       .then((data) => {
         setAllProducts(data);
+        setLoading(false)
 
       });
   }, []);
 
-const products = [allProducts, setAllProducts]
+const products = [allProducts, setAllProducts, loading, setLoading]
 
 
     return (
         <ProductContext.Provider value={products} >
-            <NavbarArea />
-            <AllProducts />
+            <NavbarArea loading={loading} setLoading={setLoading}/>
+            <AllProducts loading={loading} setLoading={setLoading} />
 
         </ProductContext.Provider>
     );
