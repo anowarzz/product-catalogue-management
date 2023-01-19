@@ -27,10 +27,6 @@ setLoading(true)
   }, []);
 
 
-  console.log(categories);
-  
-
-
 
   // state for storing all the products
   const [allProducts, setAllProducts] = useState([]);
@@ -51,6 +47,7 @@ setLoading(true)
   }, []);
 
 const products = [allProducts, setAllProducts, categories]
+
 
 
     return (

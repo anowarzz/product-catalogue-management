@@ -12,13 +12,15 @@ function NavbarArea({loading, setLoading}) {
   const [allProducts, setAllProducts, categories] = useContext(ProductContext);
 
 
+
 // state for search keywords
 // const [searchQuery, setSearchQuery] = useState("") 
 
   // Filtering products according according category name selected
   const filteredProduct = (e) => {
     const categoryName = e.target.value;
-    setLoading(true)
+
+setLoading(true)
     fetch(`https://fakestoreapi.com/products/category/${categoryName}`)
       .then((res) => res.json())
       .then((data) => {
@@ -63,8 +65,8 @@ function NavbarArea({loading, setLoading}) {
               id=""
               onChange={filteredProduct}
             >
-              <option>
-                All Category
+              <option >
+           All Category
               </option>
 
               {categories?.map((category, i) => (
