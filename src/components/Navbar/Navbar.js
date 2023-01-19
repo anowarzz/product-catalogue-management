@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useContext, useEffect, useState } from "react";
 import Button from "react-bootstrap/Button";
 import Container from "react-bootstrap/Container";
 import Form from "react-bootstrap/Form";
@@ -7,28 +7,37 @@ import Navbar from "react-bootstrap/Navbar";
 import { ProductContext } from "../HomePage/HomePage";
 
 function NavbarArea() {
-  const [products] = useContext(ProductContext);
+  // all products from product context
+  const [allProducts, setAllProducts] = useContext(ProductContext);
 
-  const uniqueCategory = [];
+  // state for storing category Names
+  const [categories, setCategories] = useState([]);
 
+  // Loading the products category Names
+  useEffect(() => {
+    fetch("https://fakestoreapi.com/products/categories")
+      .then((res) => res.json())
+      .then((data) => {
+        setCategories(data);
+      });
+  }, []);
 
-  products?.map( product => { 
-    if (uniqueCategory?.indexOf(product?.category) === -1) {
-      uniqueCategory?.push(product?.category) 
-     }
-     else{
-  
-      
-     }
-    } 
-      
-      )
+  // Filtering products according according category name selected
 
+  const filteredProduct = (e) => {
+    const categoryName = e.target.value;
+    fetch(`https://fakestoreapi.com/products/category/${categoryName}`)
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+        setAllProducts(data);
+      });
+  };
 
   return (
     <Navbar className="bg-light py-4 font-poppins" expand="md">
       <Container fluid>
-        <Navbar.Brand className="text-dark fw-bold fs-4 ps-4">
+        <Navbar.Brand className="text-dark fw-bold fs-4 ps-4 pointer">
           Catalogue Management
         </Navbar.Brand>
         <Navbar.Toggle aria-controls="navbarScroll" />
@@ -37,16 +46,21 @@ function NavbarArea() {
 
           {/* Filtering Product according category */}
           <div className="text-center text-md-end w-100">
-            <select className="px-4 py-1 mx-3" name="category" id="">
+            <select
+              className="px-4 py-1 mx-3"
+              name="category"
+              id=""
+              onChange={filteredProduct}
+            >
               <option disabled selected>
                 Select Category
               </option>
 
-      
-
-              {
-                uniqueCategory?.map((category, i) => <option key={i} value={category}>{category} </option>)
-              }
+              {categories?.map((category, i) => (
+                <option key={i} value={category}>
+                  {category}{" "}
+                </option>
+              ))}
             </select>
           </div>
 
