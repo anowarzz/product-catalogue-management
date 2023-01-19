@@ -14,7 +14,7 @@ function NavbarArea({loading, setLoading}) {
   const [categories, setCategories] = useState([]);
 
 // state for search keywords
-const [searchQuery, setSearchQuery] = useState("") 
+// const [searchQuery, setSearchQuery] = useState("") 
 
 
 
@@ -79,7 +79,7 @@ setLoading(true)
               id=""
               onChange={filteredProduct}
             >
-              <option disabled selected>
+              <option>
                 All Category
               </option>
 
@@ -94,7 +94,7 @@ setLoading(true)
           {/* Searching product using product name keywords */}
           <Form className="d-flex flex-column flex-md-row mt-3 mt-md-0 gap-2 md-gap-0">
             <Form.Control
-            value = {searchQuery}
+           
               type="search"
               placeholder="Search Here"
               className="fs-7"

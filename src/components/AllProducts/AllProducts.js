@@ -27,7 +27,7 @@ const [allProducts] = useContext(ProductContext)
           ))}
         </div>
       </div>
-        <Button style={{ position: 'fixed' , bottom: '30px', right:'50px' }} >ANALYSE</Button>
+
 
 
    
